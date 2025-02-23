@@ -45,7 +45,8 @@ const Navbar = () => {
       top: 0,
       backgroundColor: 'white',
       zIndex: 1000,
-      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)'
+      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+      maxHeight: '90px'
     }}>
         {/*nav tren */}
         <Box sx={{
@@ -65,12 +66,12 @@ const Navbar = () => {
                         backgroundColor: 'red',
                         borderRadius: '50%'
                     }}/>
-                    <Typography sx={{fontWeight:'bold', color:'black', fontSize:'2rem'}}>C2SE</Typography>
+                    <Typography sx={{fontWeight:'bold', color:'black', fontSize:'2rem'}}>Starfall</Typography>
                 </Box>
 
                 <Box sx={navItemStyle}>Markets</Box>
                 <Box sx={navItemStyle}>Tech</Box>
-                <Box sx={navItemStyle}>Media</Box>
+                
             </Box>
 
             {/* phai */}

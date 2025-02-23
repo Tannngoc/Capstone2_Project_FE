@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import Navbar from './navbar/Navbar'
-
+import Content from './body/Content'
+import { stockData } from '../APIs/demo-data'
 
 
 
@@ -9,20 +10,8 @@ const Webpages = () => {
   return (
     <Box>
         <Navbar />
-
-        <Box sx={{
-            height:'400rem'
-        }}>
-            <Box sx={{
-                height:'200rem',
-                backgroundColor:'green'
-            }}></Box>
-
-            <Box sx={{
-                height:'200rem',
-                backgroundColor:'gray'
-            }}></Box>
-        </Box>
+        <Content stockData={stockData} />
+        
     </Box>
   )
 }
