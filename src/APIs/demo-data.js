@@ -4,6 +4,7 @@ export const stockData = {
     id: "nvda",
     subtitle: "Leading AI & GPU Technology",
     quote: {
+      quoteName: 'NVIDIA',
       prices: {
         "2023-01": 168.99,
         "2023-02": 232.86,
@@ -20,7 +21,14 @@ export const stockData = {
       },
       insight: "NVIDIA showed strong growth throughout 2023, with stock price increasing by 193% from January to December, driven by AI chip demand and market leadership in GPU technology."
     },
-    about: "NVIDIA Corporation is a technology company that designs graphics processing units (GPUs) for gaming and professional markets, as well as system on chip units (SoCs) for the mobile computing and automotive market. The company is a dominant force in AI and machine learning hardware.",
+    about:{
+      aboutName:'NVIDIA Corporation',
+      aboutDes:"NVIDIA Corporation is a technology company that designs graphics processing units (GPUs) for gaming and professional markets, as well as system on chip units (SoCs) for the mobile computing and automotive market. The company is a dominant force in AI and machine learning hardware.",
+      insight: {
+        marketCap: 1000000000000,
+        insightDes: "NVIDIA's market capitalization has reached over $1 trillion, solidifying its position as a leader in the technology sector."
+      }
+    },
     financials: {
       totalRevenue: {
         "2020": 10918,
@@ -65,7 +73,14 @@ export const stockData = {
       },
       insight: "Intel experienced a significant recovery in 2023, with stock price increasing by 77% from January to December, showing strong momentum in the latter half of the year."
     },
-    about: "Intel Corporation is a technology company that designs and manufactures microprocessors and other semiconductor products. As a pioneer in the semiconductor industry, Intel has been a leader in developing innovative solutions for computing and communications.",
+    about: {
+      aboutName: 'Intel Corporation',
+      aboutDes: "Intel Corporation is a technology company that designs and manufactures microprocessors and other semiconductor products. As a pioneer in the semiconductor industry, Intel has been a leader in developing innovative solutions for computing and communications.",
+      insight: {
+        marketCap: 250000000000,
+        insightDes: "Intel's market capitalization has reached over $250 billion, reflecting its long-standing position as a major player in the technology sector."
+      }
+    },
     financials: {
       totalRevenue: {
         "2020": 77867,
@@ -110,7 +125,14 @@ export const stockData = {
       },
       insight: "Microsoft demonstrated steady growth in 2023, with stock price increasing by 55% from January to December, supported by strong cloud services performance and AI initiatives."
     },
-    about: "Microsoft Corporation is a multinational technology company that develops, manufactures, and sells computer software, consumer electronics, and personal computers. It is known for Windows OS, Office suite, Azure cloud services, and various enterprise solutions.",
+    about: {
+      aboutName: 'Microsoft Corporation',
+      aboutDes: "Microsoft Corporation is a multinational technology company that develops, manufactures, and sells computer software, consumer electronics, and personal computers. It is known for Windows OS, Office suite, Azure cloud services, and various enterprise solutions.",
+      insight: {
+        marketCap: 2000000000000,
+        insightDes: "Microsoft's market capitalization has reached over $2 trillion, solidifying its position as a leader in the technology sector."
+      }
+    },
     financials: {
       totalRevenue: {
         "2020": 143015,
