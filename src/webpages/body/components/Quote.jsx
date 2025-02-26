@@ -50,7 +50,7 @@ const Quote = ({ data }) => {
             </ResponsiveContainer>
             </Box>
             <Box sx={{ width: '50%', }}>
-            <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', color: 'black', }}>
+            <Typography  sx={{ fontWeight: 'bold', color: 'black', fontSize:'1.5rem'}}>
                 Quote
             </Typography>
             <Typography variant="body1" component="p" sx={{ color: 'black' }}>

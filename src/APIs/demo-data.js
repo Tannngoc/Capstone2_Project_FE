@@ -150,8 +150,9 @@ export const stockData = {
     },
     forecasts: {
       analystRating: {
-        buy: 90,
+        
         hold: 8,
+        buy: 90,
         sell: 2
       }
     }

@@ -1,10 +1,16 @@
 import { Box, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
+import AccountMenu from './account/AccountMenu';
+import Login from './account/Login';
+import Register from './account/Register';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false); // Added state to manage register form visibility
 
   const navItemStyle = {
     fontWeight: 'bold',
@@ -33,6 +39,15 @@ const Navbar = () => {
     textDecoration: activeTab === tab ? 'underline' : 'none',
     textDecorationColor: activeTab === tab ? 'red' : 'transparent'
   })
+
+  const handleLoginModal = () => {
+    setShowLoginModal(!showLoginModal)
+    setShowRegisterForm(false)
+};
+  const handleRegisterForm = () => {
+    setShowRegisterForm(!showRegisterForm)
+    setShowLoginModal(false)
+}; // Function to toggle register form visibility
 
   return (
     <Box sx={{
@@ -66,7 +81,9 @@ const Navbar = () => {
                         backgroundColor: 'red',
                         borderRadius: '50%'
                     }}/>
-                    <Typography sx={{fontWeight:'bold', color:'black', fontSize:'2rem'}}>Starfall</Typography>
+                    <Typography sx={{fontWeight:'bold', color:'black', fontSize:'2rem'}}>
+                        Hubble
+                    </Typography>
                 </Box>
 
                 <Box sx={navItemStyle}>Markets</Box>
@@ -118,18 +135,19 @@ const Navbar = () => {
 
                 {/* sign in */}
                 <Box sx={{paddingBottom:'0.2rem'}}>
-                    <Button variant="text" sx={{
+                    {isLogin ? <AccountMenu isLogin={isLogin} setIsLogin={setIsLogin}/> : <Button variant="text" sx={{
                         fontWeight:'bold',
                         color:'black',
                         fontSize:'1.2rem',
                         cursor:'pointer',
                         padding:'0.2rem .5rem',
                         '&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.1)'}
-                    }}>Sign in</Button>
+                    }} onClick={handleLoginModal}>Sign in</Button>}
                 </Box>
             </Box>
         </Box>
 
+        {/* nav duoi */}
         {/* nav duoi */}
         <Box>
             <Box sx={{
@@ -146,6 +164,47 @@ const Navbar = () => {
                 <Box onClick={() => setActiveTab('forecasts')} sx={tabStyle('forecasts')}>Forecasts</Box>
             </Box>
         </Box>
+
+        {/* Login Modal */}
+        <Login 
+            showLoginModal={showLoginModal}  
+            setShowLoginModal={setShowLoginModal} 
+            showRegisterForm={showRegisterForm} 
+            setShowRegisterForm={setShowRegisterForm}  
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+        />
+        {/* Register Form */}
+        <Register 
+            showLoginModal={showLoginModal}  
+            setShowLoginModal={setShowLoginModal} 
+            showRegisterForm={showRegisterForm} 
+            setShowRegisterForm={setShowRegisterForm} 
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+        />
+        {/* Backdrop to dim the background */}
+        {showLoginModal && (
+            <Box sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 1000 // Ensure the backdrop is below the modal
+            }}></Box>
+        )|| showRegisterForm && (
+            <Box sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 1000 // Ensure the backdrop is below the modal
+            }}></Box>
+        )}
     </Box>
   )
 }
