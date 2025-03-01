@@ -144,7 +144,7 @@ export const stockData = {
         "2020": 44281,
         "2021": 61271,
         "2022": 72738,
-        "2023": 74256
+        "2023": 74250
       },
       insight: "Microsoft has maintained consistent growth in both revenue and net income, showing strong performance across all business segments, particularly in cloud services."
     },
