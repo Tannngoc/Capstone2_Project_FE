@@ -148,7 +148,6 @@ const Navbar = () => {
         </Box>
 
         {/* nav duoi */}
-        {/* nav duoi */}
         <Box>
             <Box sx={{
                 display:'flex',

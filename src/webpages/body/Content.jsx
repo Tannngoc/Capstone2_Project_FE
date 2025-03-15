@@ -5,10 +5,13 @@ import Quote from './components/Quote'
 import About from './components/About'
 import Financials from './components/Financials'
 import Forecasts from './components/Forecasts'
+import Chatbot from './components/Chatbot'
+
 
 
 const Content = ({ stockData }) => {
   const [selectedCompany, setSelectedCompany] = useState(Object.keys(stockData)[0])
+  const [showChat, setShowChat] = useState(false);
 
   return (
     <Box sx={{ marginTop: '90px', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#F7FAFC'}}>
@@ -47,6 +50,7 @@ const Content = ({ stockData }) => {
           <About data={stockData[selectedCompany].about} />
           <Financials data={stockData[selectedCompany].financials} />
           <Forecasts data={stockData[selectedCompany].forecasts} />
+          <Chatbot showChat={showChat} setShowChat={setShowChat} />
         </Box>
 
       </Box>

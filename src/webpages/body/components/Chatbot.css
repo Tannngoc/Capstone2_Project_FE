@@ -1,0 +1,92 @@
+.chat-icon {
+    position: fixed;
+    bottom: 20px; /* Đặt biểu tượng ở dưới cùng */
+    right: 20px; /* Đặt biểu tượng ở bên phải */
+    background-color: red; /* Màu nền cho biểu tượng */
+    color: white;
+    border-radius: 50%; /* Biểu tượng tròn */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+  }
+  
+  .chat-icon:hover {
+    background-color: darkred; /* Màu nền khi hover */
+  }
+  
+  .chatbot-container {
+    position: fixed;
+    bottom: 80px; /* Đặt cách biểu tượng một chút */
+    right: 20px; /* Đặt khung chat ở bên phải */
+    width: 350px; /* Chiều rộng của chatbot */
+    max-height: 400px; /* Chiều cao tối đa cho chatbot */
+    display: flex;
+    flex-direction: column; /* Đặt hướng theo cột */
+    border-radius: 8px;
+    z-index: 1000; /* Đảm bảo chatbot nằm trên cùng */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+  }
+
+  .chatbot-container.fullscreen {
+    position: fixed; /* Đảm bảo vị trí cố định */
+    top: 0; /* Đặt ở trên cùng */
+    left: 0; /* Đặt ở bên trái */
+    right: 0;
+    bottom: 0;
+    width: 100vw; /* Chiều rộng toàn màn hình */
+    max-height: 100vh; /* Chiều cao toàn màn hình */
+    border-radius: 0; /* Không có bo góc */
+    padding: 0; /* Không có khoảng cách */
+    box-shadow: none; /* Bỏ bóng */
+    z-index: 1000; /* Đảm bảo nằm trên cùng */
+}
+
+.fullscreen-button {
+    color: white; /* Màu cho nút phóng to */
+    
+}
+  
+  .chatbot-header {
+    display: flex;
+    justify-content: space-between; /* Giữa tiêu đề và nút */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background-color: red; /* Màu nền cho tiêu đề */
+    color: white;
+    padding: 10px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .chatbot-body {
+    flex: 1; /* Tự động chiếm không gian còn lại */
+    overflow-y: auto; /* Cuộn khi quá nhiều tin nhắn */
+    padding: 10px;
+    height: 300px; /* Đặt chiều cao ban đầu là 0 */
+  }
+  
+  .chatbot-message {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  
+  .chatbot-message.user {
+    background-color: #e1f5fe; /* Màu nền cho tin nhắn của người dùng */
+    text-align: right; /* Tin nhắn của người dùng nằm bên phải */
+  }
+  
+  .chatbot-message.bot {
+    background-color: #ffe0b2; /* Màu nền cho tin nhắn của bot */
+    text-align: left; /* Tin nhắn của bot nằm bên trái */
+  }
+  
+  .chatbot-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5; /* Màu nền cho khu vực nhập */
+    border-top: 1px solid #ccc; /* Đường viền trên cùng */
+    gap: 5px;
+
+  }
+  
