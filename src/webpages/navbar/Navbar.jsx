@@ -4,13 +4,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountMenu from './account/AccountMenu';
 import Login from './account/Login';
 import Register from './account/Register';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showRegisterForm, setShowRegisterForm] = useState(false); // Added state to manage register form visibility
+  const [hidden, setHidden] = useState(false)
 
   const navItemStyle = {
     fontWeight: 'bold',
@@ -40,14 +40,7 @@ const Navbar = () => {
     textDecorationColor: activeTab === tab ? 'red' : 'transparent'
   })
 
-  const handleLoginModal = () => {
-    setShowLoginModal(!showLoginModal)
-    setShowRegisterForm(false)
-};
-  const handleRegisterForm = () => {
-    setShowRegisterForm(!showRegisterForm)
-    setShowLoginModal(false)
-}; // Function to toggle register form visibility
+
 
   return (
     <Box sx={{
@@ -135,15 +128,18 @@ const Navbar = () => {
 
                 {/* sign in */}
                 <Box sx={{paddingBottom:'0.2rem'}}>
-                    {isLogin ? <AccountMenu isLogin={isLogin} setIsLogin={setIsLogin}/> : <Button variant="text" sx={{
-                        fontWeight:'bold',
-                        color:'black',
-                        fontSize:'1.2rem',
-                        cursor:'pointer',
-                        padding:'0.2rem .5rem',
-                        '&:hover': {backgroundColor: 'rgba(0, 0, 0, 0.1)'}
-                    }} onClick={handleLoginModal}>Sign in</Button>}
+                    {isLogin ? <AccountMenu isLogin={isLogin} setIsLogin={setIsLogin}/> : 
+                    <Box > 
+                        <Link style={{textDecoration:'none', fontWeight:'bold', color:'black', fontSize:'1.5rem'}} to='/login'>
+                            Sign in
+                            {hidden && <Login setIsLogin={setIsLogin} isLogin={isLogin} />}
+                            {hidden && <Register setIsLogin={setIsLogin} isLogin={isLogin} />}
+                        </Link>
+                    </Box>}
                 </Box>
+
+                
+                
             </Box>
         </Box>
 
@@ -164,46 +160,11 @@ const Navbar = () => {
             </Box>
         </Box>
 
-        {/* Login Modal */}
-        <Login 
-            showLoginModal={showLoginModal}  
-            setShowLoginModal={setShowLoginModal} 
-            showRegisterForm={showRegisterForm} 
-            setShowRegisterForm={setShowRegisterForm}  
-            isLogin={isLogin}
-            setIsLogin={setIsLogin}
-        />
-        {/* Register Form */}
-        <Register 
-            showLoginModal={showLoginModal}  
-            setShowLoginModal={setShowLoginModal} 
-            showRegisterForm={showRegisterForm} 
-            setShowRegisterForm={setShowRegisterForm} 
-            isLogin={isLogin}
-            setIsLogin={setIsLogin}
-        />
-        {/* Backdrop to dim the background */}
-        {showLoginModal && (
-            <Box sx={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                zIndex: 1000 // Ensure the backdrop is below the modal
-            }}></Box>
-        )|| showRegisterForm && (
-            <Box sx={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                zIndex: 1000 // Ensure the backdrop is below the modal
-            }}></Box>
-        )}
+       
+        
+       
+        
+    
     </Box>
   )
 }
