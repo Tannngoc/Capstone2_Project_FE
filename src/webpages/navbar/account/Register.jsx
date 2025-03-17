@@ -51,7 +51,7 @@ const Register = ({ setIsLogin }) => {
                 width: '100%',
                 fontSize: '1.1rem',
               }}
-              value={username}
+           
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
@@ -64,7 +64,7 @@ const Register = ({ setIsLogin }) => {
                 width: '100%',
                 fontSize: '1.1rem'
               }}
-              value={email}
+           
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
@@ -77,7 +77,7 @@ const Register = ({ setIsLogin }) => {
                 width: '100%',
                 fontSize: '1.1rem'
               }}
-              value={password}
+             
               onChange={(e) => setPassword(e.target.value)}
             />
             <input
@@ -90,7 +90,7 @@ const Register = ({ setIsLogin }) => {
                 width: '100%',
                 fontSize: '1.1rem'
               }}
-              value={confirmPassword}
+            
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Typography sx={{ color: 'red', fontStyle: 'italic' }}>Already have account!</Typography>

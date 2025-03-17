@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+    const [isLogin,setIsLogin] = useState(true)
   const [hidden, setHidden] = useState(false)
 
   const navItemStyle = {

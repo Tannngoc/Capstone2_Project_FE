@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box } from '@mui/material'
 import Navbar from './navbar/Navbar'
 import Content from './body/Content'
@@ -8,6 +8,7 @@ import TradingViewWidget from './demo/TradingViewWidget'
 
 
 const Webpages = () => {
+  
   return (
     <Box>
         <Navbar />
