@@ -3,7 +3,7 @@ import { Box,Button,Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({isLogin, setIsLogin}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
@@ -14,7 +14,7 @@ const Login = () => {
         .then(result => {
             console.log(result);
             if(result.data === 'Success') {
-                
+                setIsLogin(true)
                 navigate('/')
             }
         })

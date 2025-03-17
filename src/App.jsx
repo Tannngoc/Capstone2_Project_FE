@@ -7,14 +7,14 @@ import Register from './webpages/navbar/account/Register'
 import Login from './webpages/navbar/account/Login'
 
 function App() {
-    const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false) 
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/register' element={<Register />}></Route>
-        <Route path='/login' element={<Login setIsLogin={setIsLogin} isLogin={isLogin} />}></Route>
-        <Route path='/' element={<Webpages setIsLogin={setIsLogin} isLogin={isLogin} />}></Route>
+        <Route path='/login' element={<Login isLogin={isLogin} setIsLogin={setIsLogin} />}></Route>
+        <Route path='/' element={<Webpages isLogin={isLogin} setIsLogin={setIsLogin} />}></Route>
       </Routes>
     </BrowserRouter>
   )

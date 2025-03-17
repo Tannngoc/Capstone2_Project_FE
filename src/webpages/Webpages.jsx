@@ -7,11 +7,11 @@ import TradingViewWidget from './demo/TradingViewWidget'
 
 
 
-const Webpages = () => {
+const Webpages = ({isLogin, setIsLogin}) => {
   
   return (
     <Box>
-        <Navbar />
+        <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
         <Content stockData={stockData} />
         <TradingViewWidget />
         

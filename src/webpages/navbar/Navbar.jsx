@@ -2,15 +2,13 @@ import { Box, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import AccountMenu from './account/AccountMenu';
-import Login from './account/Login';
-import Register from './account/Register';
+
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({isLogin, setIsLogin}) => {
   const [activeTab, setActiveTab] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [isLogin,setIsLogin] = useState(true)
-  const [hidden, setHidden] = useState(false)
+
 
   const navItemStyle = {
     fontWeight: 'bold',
@@ -132,8 +130,7 @@ const Navbar = () => {
                     <Box > 
                         <Link style={{textDecoration:'none', fontWeight:'bold', color:'black', fontSize:'1.5rem'}} to='/login'>
                             Sign in
-                            {hidden && <Login setIsLogin={setIsLogin} isLogin={isLogin} />}
-                            {hidden && <Register setIsLogin={setIsLogin} isLogin={isLogin} />}
+                            
                         </Link>
                     </Box>}
                 </Box>
