@@ -7,16 +7,41 @@ const Login = ({isLogin, setIsLogin}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
+    const [accessToken, setAccessToken] = useState(null)
+    const [message, setMessage] = useState()
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     axios.post('http://localhost:3001/login', {username, password})
+    //     .then(result => {
+    //         console.log(result);
+           
+    //         if(result.data === 'Success') {
+    //             setIsLogin(true)
+    //             navigate('/')
+    //         }
+    //     })
+    //     .catch(err => console.error(err));
+    // }
 
-    const handleSubmit = (e) => {
+    const handleSubmit1 = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/login', {username, password})
+        axios.post('http://localhost:3001/v1/auth/testlogin', {username, password})
         .then(result => {
             console.log(result);
-            if(result.data === 'Success') {
+            
+            if(result.data === "The password is incorrect" || result.data === "No existed username"){
+                console.log(result.data)
+                setMessage(result.data)
+                
+            } else {
                 setIsLogin(true)
                 navigate('/')
+                setAccessToken(result.data.accessToken)
+                console.log(result.data.role)
             }
+
+            
+            
         })
         .catch(err => console.error(err));
     }
@@ -39,7 +64,7 @@ const Login = ({isLogin, setIsLogin}) => {
                 
                 <Typography sx={{fontWeight: 'bold', fontSize: '1.8rem', marginBottom: '2rem'}}>Login</Typography>
                 <Box sx={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit1}>
                         <input
                             type="text"
                             placeholder="Username"
@@ -66,7 +91,7 @@ const Login = ({isLogin, setIsLogin}) => {
                             
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <Typography sx={{color:'red', fontStyle:'italic'}}>Username or Password is wrong!</Typography>
+                        <Typography sx={{color:'red', fontStyle:'italic'}}>{message}</Typography>
                         <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                             <Button  sx={{backgroundColor: 'white', border:'2px solid red', color:'black', fontWeight:'bold' ,padding: '0.75rem 2rem'}} type="submit">
                                 Sign in

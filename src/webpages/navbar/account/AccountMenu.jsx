@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 
 import Logout from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
+
 
 export default function AccountMenu({isLogin, setIsLogin}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,10 +76,10 @@ export default function AccountMenu({isLogin, setIsLogin}) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+           <Link style={{textDecoration:'none', color:'black'}} to={'/manageuser'}>Manage User</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+           My account
         </MenuItem>
         <Divider />
         

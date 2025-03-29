@@ -10,6 +10,7 @@ const Register = ({ setIsLogin }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate()
+  const [role, setRole] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const Register = ({ setIsLogin }) => {
       console.error('Passwords do not match');
       return;
     }
-    axios.post('http://localhost:3001/register', { username, email, password, confirmPassword })
+    axios.post('http://localhost:3001/v1/auth/testregister', { username, email, password, confirmPassword, role })
       .then(result => {
         console.log(result);
         navigate('/login')
