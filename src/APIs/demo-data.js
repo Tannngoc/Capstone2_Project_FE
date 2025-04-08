@@ -19,7 +19,96 @@ export const stockData = {
         "2023-11": 367.65,
         "2023-12": 395.22
       },
-      insight: "NVIDIA showed strong growth throughout 2023, with stock price increasing by 193% from January to December, driven by AI chip demand and market leadership in GPU technology."
+      insight: "NVIDIA showed strong growth throughout 2023, with stock price increasing by 193% from January to December, driven by AI chip demand and market leadership in GPU technology.",
+      stockPrices: {
+        month1: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month2: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month3: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month4: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month5: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month6: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month7: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month8: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month9: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month10: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month11: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month12: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        
+  
+  
+      }
     },
     about:{
       aboutName:'NVIDIA Corporation',
@@ -50,7 +139,8 @@ export const stockData = {
         hold: 12,
         sell: 3
       }
-    }
+    },
+    
   },
   INTC: {
     name: "Intel Corporation", 
@@ -70,6 +160,95 @@ export const stockData = {
         "2023-10": 35.97,
         "2023-11": 32.98,
         "2023-12": 20.25
+      },
+      stockPrices: {
+        month1: {
+          openPrice: 178.71,
+          closePrice: 178.6,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month2: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month3: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month4: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month5: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month6: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month7: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month8: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month9: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month10: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month11: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month12: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        
+  
+  
       },
       insight: "Intel experienced a significant recovery in 2023, with stock price increasing by 77% from January to December, showing strong momentum in the latter half of the year."
     },
@@ -122,6 +301,95 @@ export const stockData = {
         "2023-10": 326.67,
         "2023-11": 377.44,
         "2023-12": 374.58
+      },
+      stockPrices: {
+        month1: {
+          openPrice: 178.71,
+          closePrice: 176.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month2: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month3: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month4: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month5: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month6: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month7: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month8: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month9: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month10: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month11: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        month12: {
+          openPrice: 178.71,
+          closePrice: 178.8,
+          lowestPrice: 176.55,
+          highestPrice: 179.86,
+          volumn: 73000000,
+        },
+        
+  
+  
       },
       insight: "Microsoft demonstrated steady growth in 2023, with stock price increasing by 55% from January to December, supported by strong cloud services performance and AI initiatives."
     },

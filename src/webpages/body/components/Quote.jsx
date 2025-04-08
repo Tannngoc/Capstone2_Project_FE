@@ -5,6 +5,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const Quote = ({ data }) => {
+let currentDate = new Date();
+let year = currentDate.getFullYear();
+let month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
+let day = currentDate.getDate();
+let hours = currentDate.getHours();
+let minutes = currentDate.getMinutes();
+let seconds = currentDate.getSeconds();
   const latestMonthPrice = data.prices[Object.keys(data.prices).pop()];
   const averagePrice = Object.values(data.prices).reduce((acc, curr) => acc + curr, 0) / Object.keys(data.prices).length;
   return (
@@ -56,6 +63,64 @@ const Quote = ({ data }) => {
             <Typography variant="body1" component="p" sx={{ color: 'black' }}>
                 {data.insight}
             </Typography>
+
+            <Box sx={{display: 'flex', gap:'.5rem', marginTop:'.5rem'}}>
+                <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'20%'}}>
+                    <Typography sx={{
+                        fontWeight:'bold', 
+                        fontSize:'1.5rem', 
+                        color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red' 
+                    }}>
+                        {data.stockPrices.month1.closePrice}
+                    </Typography>
+
+                    <Typography sx={{
+                        color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
+                    }}>
+                        {((data.stockPrices.month1.closePrice - data.stockPrices.month1.openPrice)/data.stockPrices.month1.openPrice*100).toFixed(3)}%
+                    </Typography>
+
+                    <Typography sx={{color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red'}}>
+                        {`${year}-${month}-${day}`}
+                    </Typography>
+                </Box>
+                
+                    {/* openPrice: 178.71,
+            closePrice: 178.8,
+            lowestPrice: 176.55,
+            highestPrice: 179.86,
+            volumn: 73000000, */}
+                <Box sx={{width:'80%', display:'grid', gridTemplateColumns: '1fr 1fr 1fr', gap:'.5rem', backgroundColor: 'rgba(173, 216, 230, 0.5)', padding: 1 }}>
+                    
+                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
+                            <Typography sx={{fontWeight:'semi-bold'}}>Volumn:</Typography>
+                            <Typography sx={{
+                                fontWeight:'bold'
+                            }}>{data.stockPrices.month1.volumn}</Typography>
+                    </Box>  
+                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
+                            <Typography sx={{fontWeight:'semi-bold'}}>Open price:</Typography>
+                            <Typography sx={{
+                                fontWeight:'bold'
+                            }}>{data.stockPrices.month1.openPrice}</Typography>
+                    </Box>  
+                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
+                            <Typography sx={{fontWeight:'semi-bold'}}>Lowest price:</Typography>
+                            <Typography sx={{
+                                fontWeight:'bold',
+                                color: data.stockPrices.month1.lowestPrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
+                            }}>{data.stockPrices.month1.lowestPrice}</Typography>
+                    </Box>  
+                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
+                            <Typography sx={{fontWeight:'semi-bold'}}>Highest price:</Typography>
+                            <Typography sx={{
+                                fontWeight:'bold',
+                                color: data.stockPrices.month1.highestPrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
+                            }}>{data.stockPrices.month1.highestPrice}</Typography>
+                    </Box>  
+                    
+                </Box>
+            </Box>
             </Box>
         </Box>
     </Box>
