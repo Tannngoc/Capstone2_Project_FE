@@ -6,6 +6,7 @@ import About from './components/About'
 import Financials from './components/Financials'
 import Forecasts from './components/Forecasts'
 import Chatbot from './components/Chatbot'
+import News from './components/News'
 
 
 
@@ -50,6 +51,7 @@ const Content = ({ stockData }) => {
           <About data={stockData[selectedCompany].about} />
           <Financials data={stockData[selectedCompany].financials} />
           <Forecasts data={stockData[selectedCompany].forecasts} />
+          <News data={stockData[selectedCompany].news} />
           <Chatbot showChat={showChat} setShowChat={setShowChat} />
         </Box>
 
