@@ -7,6 +7,7 @@ import Quote from "./components/Quote";
 import About from "./components/About";
 import Financials from "./components/Financials";
 import Forecasts from "./components/Forecasts";
+
 import StockPriceChart from "./components/StockLineChart";
 
 import {

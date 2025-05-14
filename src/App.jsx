@@ -4,7 +4,7 @@ import './App.css'
 import Webpages from './webpages/Webpages'
 import Register from './webpages/navbar/account/Register'
 import Login from './webpages/navbar/account/Login'
-
+import News from './webpages/body/News';
 import Dashboard from './dashboard/Dashboard'
 
 function App() {
