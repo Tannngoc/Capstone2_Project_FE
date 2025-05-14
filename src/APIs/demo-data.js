@@ -140,7 +140,72 @@ export const stockData = {
         sell: 3
       }
     },
-    
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
+    }
   },
   INTC: {
     name: "Intel Corporation", 
@@ -281,6 +346,72 @@ export const stockData = {
         hold: 40,
         sell: 15
       }
+    },
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
     }
   },
   MSFT: {
@@ -423,6 +554,72 @@ export const stockData = {
         buy: 90,
         sell: 2
       }
+    },
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
     }
   }
 };
