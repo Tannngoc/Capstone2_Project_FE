@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
-const About = ({data}) => {
+const About = ({data, selectedCompany}) => {
 
-  const marketCap = data.insight.marketCap/1000000000
+  const marketCap = 1000000000
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem', backgroundColor: 'white', borderRadius: '4px', margin: '2rem 0' }}>
       <Box>
@@ -12,7 +12,7 @@ const About = ({data}) => {
           fontWeight:'bold',
           fontSize:'1.5rem'
         }}>
-          {`About ${data.aboutName}`}
+          {`About ${selectedCompany}`}
         </Typography>
       </Box>
 
@@ -22,7 +22,7 @@ const About = ({data}) => {
         <Box sx={{width:'60%', display:'flex', flexDirection:'column'}}>
           {/* description */}
           <Typography>
-            {data.aboutDes}
+            {data}
           </Typography>
 
           <Box sx={{display:'flex',gap:'2rem'}}>
@@ -67,7 +67,7 @@ const About = ({data}) => {
         {/* right */}
         <Box sx={{width:'40%'}}>
           <Typography sx={{fontWeight:'bold', fontSize:'1rem'}}>Market Cap: {`$${marketCap}B`}</Typography>
-          <Typography sx={{fontStyle:'italic'}}>{data.insight.insightDes}</Typography>
+          <Typography sx={{fontStyle:'italic'}}>{data}</Typography>
           
         </Box>
        

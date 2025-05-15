@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Webpages from './webpages/Webpages'
 import Register from './webpages/navbar/account/Register'
 import Login from './webpages/navbar/account/Login'
-import News from './webpages/body/News';
 import Dashboard from './dashboard/Dashboard'
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false) 
+  const [isLogin, setIsLogin] = useState(false)
 
   return (
     <BrowserRouter>

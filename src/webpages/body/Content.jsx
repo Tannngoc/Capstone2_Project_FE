@@ -2,11 +2,11 @@ import { Box, Button, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import Header from "./components/Header";
-import Quote from "./components/Quote";
-import About from "./components/About";
-import Financials from "./components/Financials";
-import Forecasts from "./components/Forecasts";
+// import Header from "./components/Header";
+import Qoute from "./components/Quote";
+// import About from "./components/About";
+// import Financials from "./components/Financials";
+// import Forecasts from "./components/Forecasts";
 
 import StockPriceChart from "./components/StockLineChart";
 
@@ -19,9 +19,11 @@ import {
   Legend,
 } from "recharts";
 
-const companies = ["AAPL", "MSFT", "IBM", "NVDA", "TSLA"];
+const companies = [
+  "AAPL", "MSFT", "IBM", "NVDA", "TSLA"
+];
 
-const Content = () => {
+const Content = ({isLogin}) => {
   const [selectedCompany, setSelectedCompany] = useState(companies[0]);
   const [stockData, setStockData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -209,7 +211,7 @@ const Content = () => {
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            <h2 style={{ textAlign: "center", marginBottom: "1.5rem", color: "red" }}>
               Average Price Comparison: {selectedCompany} vs Others
             </h2>
             <Box
@@ -269,6 +271,7 @@ const Content = () => {
                 textAlign: "center",
                 marginBottom: "1.5rem",
                 width: "100%",
+                color: "red",
               }}
             >
               📈 AI Stock Forecast for {selectedCompany}
@@ -382,6 +385,8 @@ const Content = () => {
             </Box>
           </Box>
         )}
+
+        <Qoute isLogin={isLogin} selectedCompany={selectedCompany} />
       </Box>
     </Box>
   );
