@@ -6,6 +6,9 @@ import About from './components/About'
 import Financials from './components/Financials'
 import Forecasts from './components/Forecasts'
 import Chatbot from './components/Chatbot'
+import News from './components/News'
+import HandleChart from './HandleChart'
+import { Market } from '../markets/Market'
 
 
 
@@ -48,9 +51,12 @@ const Content = ({ stockData }) => {
           <Header data={stockData[selectedCompany]} />
           <Quote data={stockData[selectedCompany].quote} />
           <About data={stockData[selectedCompany].about} />
+          <News data={stockData[selectedCompany].news} />
           <Financials data={stockData[selectedCompany].financials} />
           <Forecasts data={stockData[selectedCompany].forecasts} />
           <Chatbot showChat={showChat} setShowChat={setShowChat} />
+          <HandleChart />
+          <Market />
         </Box>
 
       </Box>

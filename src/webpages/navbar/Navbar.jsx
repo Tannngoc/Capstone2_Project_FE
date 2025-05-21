@@ -76,8 +76,10 @@ const Navbar = ({isLogin, setIsLogin}) => {
                         Hubble
                     </Typography>
                 </Box>
-
-                <Box sx={navItemStyle}>Markets</Box>
+                <Link style={{textDecoration:'none'}} to={"/market"}>
+                    <Box sx={navItemStyle}>Markets</Box>
+                
+                </Link>
                 <Box sx={navItemStyle}>Tech</Box>
                 
             </Box>

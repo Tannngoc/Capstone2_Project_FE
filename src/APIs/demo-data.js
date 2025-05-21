@@ -134,12 +134,80 @@ export const stockData = {
       insight: "NVIDIA has shown exceptional financial growth, with revenue and net income more than quadrupling from 2020 to 2023, primarily driven by increased demand in AI and data center segments."
     },
     forecasts: {
+      name: "NVIDIA",
+      price: 1000,
       analystRating: {
         buy: 85,
         hold: 12,
         sell: 3
       }
     },
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
+    }
     
   },
   INTC: {
@@ -252,6 +320,72 @@ export const stockData = {
       },
       insight: "Intel experienced a significant recovery in 2023, with stock price increasing by 77% from January to December, showing strong momentum in the latter half of the year."
     },
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
+    },
     about: {
       aboutName: 'Intel Corporation',
       aboutDes: "Intel Corporation is a technology company that designs and manufactures microprocessors and other semiconductor products. As a pioneer in the semiconductor industry, Intel has been a leader in developing innovative solutions for computing and communications.",
@@ -276,6 +410,8 @@ export const stockData = {
       insight: "Intel has faced challenges in recent years with declining revenue and profitability, reflecting increased competition and market share losses in key segments."
     },
     forecasts: {
+      name: "INTC",
+      price: 1000,
       analystRating: {
         buy: 45,
         hold: 40,
@@ -393,6 +529,72 @@ export const stockData = {
       },
       insight: "Microsoft demonstrated steady growth in 2023, with stock price increasing by 55% from January to December, supported by strong cloud services performance and AI initiatives."
     },
+    news: {
+      tipsrank: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "User 1 buys 11k shares of Nvidia"
+        },
+      ],
+      release: [
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+        {
+          day: "Apr 20, 2025",
+          time: "9:00pm",
+          description: "NVIDIA Blackwell GeForce RTX Arrives for every gamer, starting ai $299"
+        },
+      ]
+    },
     about: {
       aboutName: 'Microsoft Corporation',
       aboutDes: "Microsoft Corporation is a multinational technology company that develops, manufactures, and sells computer software, consumer electronics, and personal computers. It is known for Windows OS, Office suite, Azure cloud services, and various enterprise solutions.",
@@ -417,6 +619,8 @@ export const stockData = {
       insight: "Microsoft has maintained consistent growth in both revenue and net income, showing strong performance across all business segments, particularly in cloud services."
     },
     forecasts: {
+      name: "MSFT",
+      price: 1000,
       analystRating: {
         
         hold: 8,

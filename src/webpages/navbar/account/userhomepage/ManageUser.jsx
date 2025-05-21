@@ -1,6 +1,7 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const ManageUser = () => {
@@ -86,6 +87,11 @@ const ManageUser = () => {
 
   return (
     <Box sx={{bgcolor:'#f0f0f0', width:'100vw', height:'100vh', borderRadius: '10px'}}>
+      <Typography>
+        <Link to={'/'}>
+          <Button sx={{fontWeight:'semi-bold', color:'red', border:'1px solid red', margin:'5px'}}>Back</Button>
+        </Link>
+      </Typography>
       <Typography sx={{color:'red', fontWeight:'bold', padding:'1rem'}} variant="h4" component="h1" gutterBottom>Manage Users</Typography>
       <Box sx={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
         <Button sx={{margin:'1rem'}} variant="contained" color="primary" onClick={handleOpen}>Add User</Button>
