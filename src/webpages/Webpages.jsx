@@ -12,7 +12,7 @@ const Webpages = ({isLogin, setIsLogin}) => {
   return (
     <Box>
         <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
-        <Content stockData={stockData} />
+        <Content stockData={stockData} isLogin={isLogin} />
         <TradingViewWidget />
         
     </Box>

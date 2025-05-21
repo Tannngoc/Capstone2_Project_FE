@@ -76,7 +76,7 @@ export default function AccountMenu({isLogin, setIsLogin}) {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-           <Link style={{textDecoration:'none', color:'black'}} to={'/manageuser'}>Manage User</Link>
+           <Link style={{textDecoration:'none', color:'black'}} to={'/dashboard/manageusers'}>Manage User</Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
            My account

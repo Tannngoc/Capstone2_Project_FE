@@ -25,19 +25,22 @@ const Login = ({isLogin, setIsLogin}) => {
 
     const handleSubmit1 = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/v1/auth/testlogin', {username, password})
+        
+        axios.post('http://127.0.0.1:5000/api/auth/login', {username, password})
+        
         .then(result => {
             console.log(result);
-            
+            setIsLogin(true)
             if(result.data === "The password is incorrect" || result.data === "No existed username"){
                 console.log(result.data)
                 setMessage(result.data)
                 
             } else {
-                setIsLogin(true)
+            
                 navigate('/')
                 setAccessToken(result.data.accessToken)
                 console.log(result.data.role)
+                console.log(isLogin)
             }
 
             

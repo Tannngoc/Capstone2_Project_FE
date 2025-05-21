@@ -1,130 +1,387 @@
-import React from 'react'
-import { Box, Typography } from '@mui/material'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import {
+  Box,
+  Button,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+} from "@mui/material";
+import axios from "axios";
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+const Quote = ({ selectedCompany, isLogin, userId = 1 }) => {
+  const [openBuy, setOpenBuy] = useState(false);
+  const [openSell, setOpenSell] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(2000);
 
-const Quote = ({ data }) => {
-let currentDate = new Date();
-let year = currentDate.getFullYear();
-let month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
-let day = currentDate.getDate();
-let hours = currentDate.getHours();
-let minutes = currentDate.getMinutes();
-let seconds = currentDate.getSeconds();
-  const latestMonthPrice = data.prices[Object.keys(data.prices).pop()];
-  const averagePrice = Object.values(data.prices).reduce((acc, curr) => acc + curr, 0) / Object.keys(data.prices).length;
+  // Mở dialog Buy
+  const handleOpenBuy = () => {
+    setQuantity(1);
+    setOpenBuy(true);
+  };
+  const handleCloseBuy = () => setOpenBuy(false);
+
+  // Mở dialog Sell
+  const handleOpenSell = () => {
+    setQuantity(1);
+    setOpenSell(true);
+  };
+  const handleCloseSell = () => setOpenSell(false);
+
+  // Handle thay đổi số lượng
+  const handleQuantityChange = (e) => {
+    const val = Math.max(1, Number(e.target.value));
+    setQuantity(val);
+  };
+
+  // Gọi API đặt lệnh mua hoặc bán
+  const placeOrder = async (orderType) => {
+    try {
+      const res = await axios.post("http://127.0.0.1:5000/api/orders/place", {
+        user_id: userId,
+        stock_symbol: selectedCompany,
+        order_type: orderType,
+        quantity,
+        price,
+      });
+      alert(`${orderType} order successful!`);
+      if (orderType === "BUY") handleCloseBuy();
+      else handleCloseSell();
+    } catch (error) {
+      console.error(
+        `${orderType} failed:`,
+        error.response?.data || error.message
+      );
+      alert(`${orderType} order failed. Please try again.`);
+    }
+  };
+
+  // Xử lý xác nhận mua
+  const handleBuyConfirm = () => {
+    placeOrder("BUY");
+  };
+
+  // Xử lý xác nhận bán
+  const handleSellConfirm = () => {
+    placeOrder("SELL");
+  };
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', padding: '2rem', backgroundColor: 'white', borderRadius: '4px', margin: '2rem 0' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap:'3rem', marginBottom: '1rem', alignItems:'baseline' }}>
-            <Box sx={{display:'flex', flexDirection:'column', }}>
-                <Typography sx={{ color: 'black', fontWeight:'bold', fontSize:'2rem' }}>
-                    ${latestMonthPrice}
-                </Typography>
-                <Typography sx={{fontStyle:'italic', opacity:'0.7'}}>Price as of latest month</Typography>
-            </Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "2rem",
+        backgroundColor: "white",
+        borderRadius: "4px",
+        margin: "2rem 0",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "3rem",
+          marginBottom: "1rem",
+          alignItems: "baseline",
+          fontWeight: "bold",
+          fontSize: "2rem",
+          color: "red",
+        }}
+      >
+        {selectedCompany}
+      </Box>
 
-            <Box sx={{
-                display:'flex',
-            }}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '1rem', color: 'black' }}>
-                    ${averagePrice.toFixed(2)} <span style={{ color: averagePrice < latestMonthPrice ? 'green' : 'red' }}>{averagePrice < latestMonthPrice ? `+ ${(latestMonthPrice - averagePrice).toFixed(2)}` : `- ${(averagePrice - latestMonthPrice).toFixed(2)}`}</span>
-                </Typography>
-                
-            </Box>
-        </Box>
+      <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            fontSize: "1.5rem",
+            marginBottom: ".5rem",
+          }}
+        >
+          Quote
+        </Typography>
 
-        
-        <Box sx={{ display: 'flex', flexDirection: 'row',  width: '100%' }}>
-            <Box sx={{ width: '50%' }}>
-            <ResponsiveContainer width="100%" height={300}>
-                <LineChart
-                data={Object.entries(data.prices).map(([name, price]) => ({ name, price }))}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-                >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                
-                <Line type="monotone" dataKey="price" stroke="#FF0000" activeDot={{ r: 8 }} />
-                </LineChart>
-            </ResponsiveContainer>
-            </Box>
-            <Box sx={{ width: '50%', }}>
-            <Typography  sx={{ fontWeight: 'bold', color: 'black', fontSize:'1.5rem'}}>
-                Quote
-            </Typography>
-            <Typography variant="body1" component="p" sx={{ color: 'black' }}>
-                {data.insight}
-            </Typography>
+        {selectedCompany === "AAPL" ? (
+          <Typography>
+            Apple Inc. (AAPL) is a multinational technology company known for
+            designing, manufacturing, and marketing a wide range of consumer
+            electronics, software, and services. The company's products include
+            smartphones (iPhone), personal computers (Mac), tablets (iPad),
+            wearables (Apple Watch), and accessories like AirPods. Apple also
+            provides services like the App Store, iCloud, and streaming
+            services, according to Reuters.
+          </Typography>
+        ) : selectedCompany === "MSFT" ? (
+          <Typography>
+            Microsoft Corporation (MSFT) is a multinational technology company
+            headquartered in Redmond, Washington. Founded in 1975 by Bill Gates
+            and Paul Allen, it initially gained dominance in the operating
+            systems market with MS-DOS and later, Windows. Today, Microsoft is a
+            leading provider of cloud computing services, software, hardware,
+            and online services, encompassing a wide range of offerings from
+            personal computing and entertainment to enterprise solutions and
+            artificial intelligence. The company's flagship products include the
+            Windows operating system, Microsoft Office suite, and Azure cloud
+            platform. Microsoft has also expanded into gaming with its Xbox
+            consoles and services like Xbox Live and Game Pass. The company is
+            known for its commitment to innovation, security, and
+            sustainability, making it a key player in the global technology
+            landscape.
+          </Typography>
+        ) : selectedCompany === "IBM" ? (
+          <Typography>
+            International Business Machines Corporation (IBM) is a multinational
+            technology and consulting company headquartered in Armonk, New York.
+            Founded in 1911, IBM has evolved from its early days as a hardware
+            manufacturer to become a leader in cloud computing, artificial
+            intelligence (AI), and enterprise solutions. The company offers a
+            wide range of products and services, including mainframe computers,
+            software, data analytics, and IT consulting. IBM is known for its
+            research and development efforts, holding numerous patents and
+            pioneering advancements in various fields, including quantum
+            computing and blockchain technology. With a strong focus on
+            innovation and sustainability, IBM continues to play a significant
+            role in shaping the future of technology.
+          </Typography>
+        ) : selectedCompany === "NVDA" ? (
+          <Typography>
+            NVIDIA Corporation (NVDA) is a leading American technology company
+            known for its graphics processing units (GPUs) and artificial
+            intelligence (AI) solutions. Founded in 1993, NVIDIA initially
+            gained prominence in the gaming industry with its GeForce GPUs,
+            which revolutionized computer graphics. Over the years, the company
+            has expanded its focus to include AI, deep learning, and data center
+            solutions, positioning itself as a key player in the AI revolution.
+            NVIDIA's products are widely used in gaming, professional
+            visualization, data centers, and automotive applications. The
+            company's commitment to innovation and cutting-edge technology has
+            made it a leader in the semiconductor industry.
+          </Typography>
+        ) : selectedCompany === "TSLA" ? (
+          <Typography>
+            Tesla, Inc. (TSLA) is an American electric vehicle (EV) and clean
+            energy company founded in 2003 by Elon Musk, JB Straubel, Martin
+            Eberhard, Marc Tarpenning, and Ian Wright. Headquartered in Palo
+            Alto, California, Tesla is known for its innovative electric cars,
+            battery energy storage systems, and solar products. The company's
+            flagship vehicles include the Model S, Model 3, Model X, and Model
+            Y, which have gained popularity for their performance, range, and
+            advanced technology features. In addition to electric vehicles,
+            Tesla produces energy storage solutions like the Powerwall and
+            Powerpack and solar products through its subsidiary SolarCity.
+            Tesla's mission is to accelerate the world's transition to
+            sustainable energy.
+          </Typography>
+        ) : null}
+      </Box>
 
-            <Box sx={{display: 'flex', gap:'.5rem', marginTop:'.5rem'}}>
-                <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'20%'}}>
-                    <Typography sx={{
-                        fontWeight:'bold', 
-                        fontSize:'1.5rem', 
-                        color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red' 
-                    }}>
-                        {data.stockPrices.month1.closePrice}
-                    </Typography>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          gap: "2rem",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "1rem",
+        }}
+      >
+        {!isLogin ? (
+          <Link to="/login" style={{ textDecoration: "none", flex: 1 }}>
+            <Button
+              sx={{
+                border: "1px solid red",
+                color: "red",
+                fontSize: "1.3rem",
+                padding: ".5rem 4rem",
+                width: "100%",
+              }}
+            >
+              Buy
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            sx={{
+              border: "1px solid red",
+              color: "red",
+              fontSize: "1.3rem",
+              padding: ".5rem 4rem",
+              flex: 1,
+            }}
+            onClick={handleOpenBuy}
+          >
+            Buy
+          </Button>
+        )}
 
-                    <Typography sx={{
-                        color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
-                    }}>
-                        {((data.stockPrices.month1.closePrice - data.stockPrices.month1.openPrice)/data.stockPrices.month1.openPrice*100).toFixed(3)}%
-                    </Typography>
+        {!isLogin ? (
+          <Link to="/login" style={{ textDecoration: "none", flex: 1 }}>
+            <Button
+              sx={{
+                border: "1px solid red",
+                color: "white",
+                backgroundColor: "red",
+                fontSize: "1.3rem",
+                padding: ".5rem 4rem",
+                width: "100%",
+              }}
+            >
+              Sell
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            sx={{
+              border: "1px solid red",
+              color: "white",
+              backgroundColor: "red",
+              fontSize: "1.3rem",
+              padding: ".5rem 4rem",
+              flex: 1,
+            }}
+            onClick={handleOpenSell}
+          >
+            Sell
+          </Button>
+        )}
+      </Box>
 
-                    <Typography sx={{color: data.stockPrices.month1.closePrice > data.stockPrices.month1.openPrice ? 'green' : 'red'}}>
-                        {`${year}-${month}-${day}`}
-                    </Typography>
-                </Box>
-                
-                    {/* openPrice: 178.71,
-            closePrice: 178.8,
-            lowestPrice: 176.55,
-            highestPrice: 179.86,
-            volumn: 73000000, */}
-                <Box sx={{width:'80%', display:'grid', gridTemplateColumns: '1fr 1fr 1fr', gap:'.5rem', backgroundColor: 'rgba(173, 216, 230, 0.5)', padding: 1 }}>
-                    
-                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                            <Typography sx={{fontWeight:'semi-bold'}}>Volumn:</Typography>
-                            <Typography sx={{
-                                fontWeight:'bold'
-                            }}>{data.stockPrices.month1.volumn}</Typography>
-                    </Box>  
-                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                            <Typography sx={{fontWeight:'semi-bold'}}>Open price:</Typography>
-                            <Typography sx={{
-                                fontWeight:'bold'
-                            }}>{data.stockPrices.month1.openPrice}</Typography>
-                    </Box>  
-                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                            <Typography sx={{fontWeight:'semi-bold'}}>Lowest price:</Typography>
-                            <Typography sx={{
-                                fontWeight:'bold',
-                                color: data.stockPrices.month1.lowestPrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
-                            }}>{data.stockPrices.month1.lowestPrice}</Typography>
-                    </Box>  
-                    <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                            <Typography sx={{fontWeight:'semi-bold'}}>Highest price:</Typography>
-                            <Typography sx={{
-                                fontWeight:'bold',
-                                color: data.stockPrices.month1.highestPrice > data.stockPrices.month1.openPrice ? 'green' : 'red'
-                            }}>{data.stockPrices.month1.highestPrice}</Typography>
-                    </Box>  
-                    
-                </Box>
-            </Box>
-            </Box>
-        </Box>
+      {/* Dialog Sell */}
+      <Dialog open={openSell} onClose={handleCloseSell} maxWidth="sm" fullWidth>
+        <DialogTitle
+          sx={{
+            background: "linear-gradient(90deg, #FF0000 0%, #8b866d 100%)",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "1.5rem",
+          }}
+        >
+          Sell {selectedCompany}
+        </DialogTitle>
+        <DialogContent
+          sx={{
+            padding: "2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          <Typography variant="subtitle1" color="text.secondary">
+            Current Price: <b style={{ color: "#FF0000" }}>{price}$</b>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Your Holdings: <b>20</b> shares{" "}
+            {/* TODO: Replace with real holdings */}
+          </Typography>
+          <TextField
+            label="Quantity to Sell"
+            type="number"
+            value={quantity}
+            onChange={handleQuantityChange}
+            inputProps={{ min: 1 }}
+            fullWidth
+          />
+          <TextField
+            label="Total Value"
+            value={`${(quantity * price).toFixed(2)}$`}
+            InputProps={{ readOnly: true }}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions
+          sx={{
+            padding: "1.5rem",
+            justifyContent: "space-between",
+            background: "#f9f9f9",
+          }}
+        >
+          <Button onClick={handleCloseSell} sx={{ color: "#8b866d" }}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleSellConfirm}
+            sx={{
+              background: "linear-gradient(90deg, #FF0000 0%, #8b866d 100%)",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Confirm Sell
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Dialog Buy */}
+      <Dialog open={openBuy} onClose={handleCloseBuy} maxWidth="sm" fullWidth>
+        <DialogTitle
+          sx={{
+            background: "linear-gradient(90deg, #4CAF50 0%, #8b866d 100%)",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "1.5rem",
+          }}
+        >
+          Buy {selectedCompany}
+        </DialogTitle>
+        <DialogContent
+          sx={{
+            padding: "2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          <Typography variant="subtitle1" color="text.secondary">
+            Current Price: <b style={{ color: "#4CAF50" }}>{price}$</b>
+          </Typography>
+          <TextField
+            label="Quantity to Buy"
+            type="number"
+            value={quantity}
+            onChange={handleQuantityChange}
+            inputProps={{ min: 1 }}
+            fullWidth
+          />
+          <TextField
+            label="Total Cost"
+            value={`${(quantity * price).toFixed(2)}$`}
+            InputProps={{ readOnly: true }}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions
+          sx={{
+            padding: "1.5rem",
+            justifyContent: "space-between",
+            background: "#f9f9f9",
+          }}
+        >
+          <Button onClick={handleCloseBuy} sx={{ color: "#8b866d" }}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleBuyConfirm}
+            sx={{
+              background: "linear-gradient(90deg, #4CAF50 0%, #8b866d 100%)",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Confirm Buy
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
-  )
-}
+  );
+};
 
-export default Quote
+export default Quote;
