@@ -46,7 +46,6 @@ const Navbar = ({ isLogin, setIsLogin }) => {
   };
 
   return (
-<<<<<<< HEAD
     <Box sx={{
       width:'100vw', 
       display:'flex', 
@@ -146,7 +145,6 @@ const Navbar = ({ isLogin, setIsLogin }) => {
                 
                 
             </Box>
-=======
     <Box
       sx={{
         width: "100vw",
@@ -200,7 +198,6 @@ const Navbar = ({ isLogin, setIsLogin }) => {
 
           <Box sx={navItemStyle}>Markets</Box>
           <Box sx={navItemStyle}>Tech</Box>
->>>>>>> c670fe4fb799978bc34d501d50b3497d78016603
         </Box>
 
         {/* phai */}

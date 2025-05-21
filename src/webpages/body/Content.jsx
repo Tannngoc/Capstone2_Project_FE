@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Box, Button } from '@mui/material'
 import React, { useState } from 'react'
 import Header from './components/Header'
@@ -10,11 +9,9 @@ import Chatbot from './components/Chatbot'
 import News from './components/News'
 import HandleChart from './HandleChart'
 import { Market } from '../markets/Market'
-=======
 import { Box, Button, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
->>>>>>> c670fe4fb799978bc34d501d50b3497d78016603
 
 // import Header from "./components/Header";
 import Qoute from "./components/Quote";
@@ -195,7 +192,6 @@ const Content = ({isLogin}) => {
             </Button>
           ))}
         </Box>
-<<<<<<< HEAD
         <Box>
           <Header data={stockData[selectedCompany]} />
           <Quote data={stockData[selectedCompany].quote} />
@@ -206,7 +202,6 @@ const Content = ({isLogin}) => {
           <Chatbot showChat={showChat} setShowChat={setShowChat} />
           <HandleChart />
           <Market />
-=======
 
         {/* Line Chart */}
         <Box sx={{ padding: "1rem", minHeight: 400 }}>
@@ -225,7 +220,6 @@ const Content = ({isLogin}) => {
           ) : (
             <p>No data available.</p>
           )}
->>>>>>> c670fe4fb799978bc34d501d50b3497d78016603
         </Box>
 
         {/* Pie Charts */}
