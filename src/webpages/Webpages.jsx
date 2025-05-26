@@ -5,10 +5,7 @@ import Content from './body/Content'
 import { stockData } from '../APIs/demo-data'
 import TradingViewWidget from './demo/TradingViewWidget'
 
-
-
 const Webpages = ({isLogin, setIsLogin}) => {
-  
   return (
     <Box>
         <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />

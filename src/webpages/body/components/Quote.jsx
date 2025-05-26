@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import {
   Box,
@@ -13,11 +14,35 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-const Quote = ({ selectedCompany, isLogin, userId = 1 }) => {
+const Quote = ({ selectedCompany, isLogin, userId }) => {
   const [openBuy, setOpenBuy] = useState(false);
   const [openSell, setOpenSell] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(2000);
+  const [price, setPrice] = useState(0);
+
+  useEffect(() => {
+    const fetchLatestPrice = async () => {
+      try {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1;
+        // Gọi API lấy dữ liệu tháng hiện tại
+        const res = await axios.get(
+          `http://127.0.0.1:5000/api/stock-price/${selectedCompany}/${year}/${month}`
+        );
+        if (res.data && res.data.length > 0) {
+          // Lấy ngày mới nhất (giả sử data đã sort theo ngày tăng dần)
+          const latest = res.data[res.data.length - 1];
+          setPrice(latest.close_price);
+        } else {
+          setPrice(0);
+        }
+      } catch (err) {
+        setPrice(0);
+      }
+    };
+    fetchLatestPrice();
+  }, [selectedCompany]);
 
   // Mở dialog Buy
   const handleOpenBuy = () => {
@@ -41,15 +66,27 @@ const Quote = ({ selectedCompany, isLogin, userId = 1 }) => {
 
   // Gọi API đặt lệnh mua hoặc bán
   const placeOrder = async (orderType) => {
+    console.log("Preparing to place order:", {
+      user_id: Number(userId),
+      stock_symbol: selectedCompany,
+      order_type: orderType,
+      quantity,
+      price,
+    });
     try {
-      const res = await axios.post("http://127.0.0.1:5000/api/orders/place", {
-        user_id: userId,
-        stock_symbol: selectedCompany,
-        order_type: orderType,
-        quantity,
-        price,
-      });
-      alert(`${orderType} order successful!`);
+      const token = localStorage.getItem("accessToken");
+      const res = await axios.post(
+        "http://127.0.0.1:5000/api/orders/place",
+        {
+          user_id: Number(userId),
+          stock_symbol: selectedCompany,
+          order_type: orderType,
+          quantity,
+          price,
+        },
+        token ? { headers: { Authorization: `Bearer ${token}` } } : undefined
+      );
+      toast.success(`${orderType} order successful!`);
       if (orderType === "BUY") handleCloseBuy();
       else handleCloseSell();
     } catch (error) {
@@ -57,7 +94,7 @@ const Quote = ({ selectedCompany, isLogin, userId = 1 }) => {
         `${orderType} failed:`,
         error.response?.data || error.message
       );
-      alert(`${orderType} order failed. Please try again.`);
+      toast.error(`${orderType} order failed. Please try again.`);;
     }
   };
 
