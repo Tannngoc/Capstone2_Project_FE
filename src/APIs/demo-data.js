@@ -208,10 +208,7 @@ export const stockData = {
         },
       ]
     }
-<<<<<<< HEAD
     
-=======
->>>>>>> c670fe4fb799978bc34d501d50b3497d78016603
   },
   INTC: {
     name: "Intel Corporation", 

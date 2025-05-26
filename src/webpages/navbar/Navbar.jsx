@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountMenu from "./account/AccountMenu";
@@ -43,108 +43,10 @@ const Navbar = ({ isLogin, setIsLogin }) => {
     if (tab === "News") {
       navigate("/news");
     }
+    // You can add more navigation logic for other tabs if needed
   };
 
   return (
-    <Box sx={{
-      width:'100vw', 
-      display:'flex', 
-      flexDirection:'column', 
-      justifyContent:'center', 
-      alignItems:'center',
-      position: 'fixed',
-      top: 0,
-      backgroundColor: 'white',
-      zIndex: 1000,
-      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-      maxHeight: '90px'
-    }}>
-        {/*nav tren */}
-        <Box sx={{
-            display:'flex',
-            width:'90vw',
-            marginTop:'.5rem',
-            justifyContent:'space-between',
-            borderBottom:'2px solid black',
-            alignItems:'center',
-        }}>
-            {/* trai */}
-            <Box sx={{display:'flex', gap:'2rem', alignItems:'center'}}>
-                <Box sx={{display:'flex', alignItems:'center', gap:'0.5rem', cursor:'pointer'}}>
-                    <Box sx={{
-                        width: '20px',
-                        height: '20px',
-                        backgroundColor: 'red',
-                        borderRadius: '50%'
-                    }}/>
-                    <Typography sx={{fontWeight:'bold', color:'black', fontSize:'2rem'}}>
-                        Hubble
-                    </Typography>
-                </Box>
-                <Link style={{textDecoration:'none'}} to={"/market"}>
-                    <Box sx={navItemStyle}>Markets</Box>
-                
-                </Link>
-                <Box sx={navItemStyle}>Tech</Box>
-                
-            </Box>
-
-            {/* phai */}
-            <Box sx={{display:'flex', alignItems:'center', gap:'0.5rem'}}>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                    {isSearchOpen ? (
-                        <Box sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            backgroundColor: '#f5f5f5',
-                            padding: '0.5rem',
-                            borderRadius: '4px'
-                        }}>
-                            <input
-                                type="text"
-                                placeholder="Search..."
-                                style={{
-                                    border: 'none',
-                                    outline: 'none',
-                                    backgroundColor: 'transparent',
-                                    fontSize: '1rem',
-                                    width: '200px'
-                                }}
-                                autoFocus
-                                onBlur={() => setIsSearchOpen(false)}
-                            />
-                            <SearchIcon sx={{
-                                fontSize:'1.8rem',
-                                cursor: 'pointer',
-                                '&:hover': {opacity: 0.7}
-                            }} />
-                        </Box>
-                    ) : (
-                        <SearchIcon 
-                            onClick={() => setIsSearchOpen(true)}
-                            sx={{
-                                fontSize:'1.8rem',
-                                cursor: 'pointer',
-                                '&:hover': {opacity: 0.7}
-                            }} 
-                        />
-                    )}
-                </Box>
-
-                {/* sign in */}
-                <Box sx={{paddingBottom:'0.2rem'}}>
-                    {isLogin ? <AccountMenu isLogin={isLogin} setIsLogin={setIsLogin}/> : 
-                    <Box > 
-                        <Link style={{textDecoration:'none', fontWeight:'bold', color:'black', fontSize:'1.5rem'}} to='/login'>
-                            Sign in
-                            
-                        </Link>
-                    </Box>}
-                </Box>
-
-                
-                
-            </Box>
     <Box
       sx={{
         width: "100vw",
@@ -160,7 +62,7 @@ const Navbar = ({ isLogin, setIsLogin }) => {
         maxHeight: "90px",
       }}
     >
-      {/*nav tren */}
+      {/* nav tren */}
       <Box
         sx={{
           display: "flex",
@@ -173,14 +75,7 @@ const Navbar = ({ isLogin, setIsLogin }) => {
       >
         {/* trai */}
         <Box sx={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              cursor: "pointer",
-            }}
-          >
+          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
             <Box
               sx={{
                 width: "20px",
@@ -189,14 +84,13 @@ const Navbar = ({ isLogin, setIsLogin }) => {
                 borderRadius: "50%",
               }}
             />
-            <Typography
-              sx={{ fontWeight: "bold", color: "black", fontSize: "2rem" }}
-            >
+            <Typography sx={{ fontWeight: "bold", color: "black", fontSize: "2rem" }}>
               Hubble
             </Typography>
           </Box>
-
-          <Box sx={navItemStyle}>Markets</Box>
+          <Link style={{ textDecoration: "none" }} to={"/market"}>
+            <Box sx={navItemStyle}>Markets</Box>
+          </Link>
           <Box sx={navItemStyle}>Tech</Box>
         </Box>
 
@@ -287,16 +181,10 @@ const Navbar = ({ isLogin, setIsLogin }) => {
           <Box onClick={() => handleTabClick("about")} sx={tabStyle("about")}>
             About
           </Box>
-          <Box
-            onClick={() => handleTabClick("financials")}
-            sx={tabStyle("financials")}
-          >
+          <Box onClick={() => handleTabClick("financials")} sx={tabStyle("financials")}>
             Financials
           </Box>
-          <Box
-            onClick={() => handleTabClick("forecasts")}
-            sx={tabStyle("forecasts")}
-          >
+          <Box onClick={() => handleTabClick("forecasts")} sx={tabStyle("forecasts")}>
             Forecasts
           </Box>
         </Box>
