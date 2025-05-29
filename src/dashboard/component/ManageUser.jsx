@@ -5,7 +5,8 @@ import {
 } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { red } from '@mui/material/colors';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ManageUser = () => {
   const [open, setOpen] = useState(false)
@@ -59,20 +60,27 @@ const ManageUser = () => {
     handleClose()
   }
 
-  const fetchData = async () => {
-    const response = await axios.get('http://localhost:3001/v1/user/')
-    setDataList(response.data)
+const fetchData = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:5000/api/user/users');
+    setDataList(response.data);
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
   }
+};
 
   useEffect(() => {
     fetchData()
   }, [])
 
-  const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:3001/delete/${id}`)
-    fetchData()
+const handleDelete = async (id) => {
+  try {
+    await axios.delete(`http://127.0.0.1:5000/api/user/users/${id}`);
+    fetchData();
+  } catch (error) {
+    console.error("Delete failed:", error);
   }
-
+};
   const handleEditOnChange = (e) => {
     setFormDataEdit(prevState => ({
       ...prevState,
@@ -80,12 +88,22 @@ const ManageUser = () => {
     }))
   }
 
-  const handleUpdate = async (e) => {
-    e.preventDefault()
-    await axios.put('http://localhost:3001/update', formDataEdit)
-    fetchData()
-    handleEditClose()
+const handleUpdate = async (e) => {
+  e.preventDefault();
+  try {
+    await axios.put(
+      `http://127.0.0.1:5000/api/user/users/${formDataEdit.id}`,
+      {
+        username: formDataEdit.username,
+        email: formDataEdit.email,
+      }
+    );
+    fetchData();
+    handleEditClose();
+  } catch (error) {
+    console.error("Update failed:", error);
   }
+};
 
   return (
     <Box sx={{ flexGrow: 1, p: 3, bgcolor: 'white', borderRadius: '10px', overflow: 'hidden' }}>
@@ -97,26 +115,39 @@ const ManageUser = () => {
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: 'bold' }}>Username</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Password</TableCell>
               <TableCell align="right" sx={{ fontWeight: 'bold' }}>Email</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Role</TableCell>
-              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Actions</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Created at</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 'bold' }}>Update at</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {dataList.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>{user.username}</TableCell>
-                <TableCell align="right">{user.password}</TableCell>
-                <TableCell align="right">{user.email}</TableCell>
-                <TableCell align="right">{user.role ? 'Admin' : 'User'}</TableCell>
-                <TableCell align="right">
-                  <Button onClick={() => handleEditOpen(user)} variant="contained" color="primary" size="small">Update</Button>
-                  <Button onClick={() => handleDelete(user._id)} variant="contained" color="error" size="small" sx={{ ml: 1 }}>Delete</Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+<TableBody>
+  {dataList.map((user) => (
+    <TableRow key={user.id}>
+      <TableCell>{user.username}</TableCell>
+      <TableCell align="right">{user.email}</TableCell>
+      <TableCell align="right">{user.created_at || '-'}</TableCell>
+      <TableCell align="right">{user.updated_at || '-'}</TableCell>
+      <TableCell align="right">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => handleEditOpen(user)}
+          sx={{ minWidth: 0, mr: 1 }}
+        >
+          <EditIcon />
+        </Button>
+        <Button
+          size="small"
+          color="error"
+          onClick={() => handleDelete(user.id)}
+          sx={{ minWidth: 0 }}
+        >
+          <DeleteIcon />
+        </Button>
+      </TableCell>
+    </TableRow>
+  ))}
+</TableBody>
         </Table>
       </TableContainer>
 

@@ -38,6 +38,8 @@ const Login = ({ isLogin, setIsLogin }) => {
         ) {
           setMessage(result.data);
           toast.error(result.data, { autoClose: 2000 });
+          setTimeout(() => {
+          }, 2200);
         } else {
           setIsLogin(true);
           setAccessToken(result.data.access_token);
@@ -48,7 +50,7 @@ const Login = ({ isLogin, setIsLogin }) => {
           toast.success("Login successful!", { autoClose: 1800 });
           setTimeout(() => {
             navigate("/");
-          }, 2100);
+          }, 2200);
         }
       })
       .catch(() => {
