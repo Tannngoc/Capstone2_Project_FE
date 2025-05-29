@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, IconButton, Button, Paper } from '@mui/material';
 import { Chat, Close, Fullscreen, FullscreenExit } from '@mui/icons-material'; // Thêm biểu tượng Fullscreen
-import './Chatbot.css'; // Đảm bảo bạn có file CSS để định kiểu
+
 
 const Chatbot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { Box, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 

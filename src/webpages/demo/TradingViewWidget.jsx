@@ -8,47 +8,15 @@ const TradingViewWidget = ({ symbol = "NASDAQ:AAPL" }) => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Clear previous widget if any
     container.innerHTML = "";
 
-<<<<<<< HEAD
-    useEffect(
-      () => {
-        const script = document.createElement("script");
-        script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.innerHTML = `
-          {
-            "autosize": true,
-            "symbol": "NASDAQ:AAPL",
-            "interval": "D",
-            "timezone": "Etc/UTC",
-            "theme": "light",
-            "style": "1",
-            "locale": "en",
-            "allow_symbol_change": true,
-            "calendar": false,
-            "support_host": "https://www.tradingview.com"
-          }`;
-        container.current.appendChild(script);
-      },
-      []
-    );
-  
-    return (
-      <div className="tradingview-widget-container" ref={container} style={{alignItems:'center', height: "80vh", maxWidth: "98%", marginLeft:'auto', marginRight:'auto', margin:'15px' }}>
-        <div className="tradingview-widget-container__widget" style={{ height: "calc(100% - 32px)", width: "100%" }}></div>
-        <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
-      </div>
-    )
-}
-=======
+    // Create script element for TradingView widget
     const script = document.createElement("script");
     script.src =
       "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.type = "text/javascript";
     script.async = true;
->>>>>>> c670fe4fb799978bc34d501d50b3497d78016603
 
     script.innerHTML = JSON.stringify({
       autosize: true,
@@ -63,10 +31,14 @@ const TradingViewWidget = ({ symbol = "NASDAQ:AAPL" }) => {
       support_host: "https://www.tradingview.com",
     });
 
-    container.appendChild(script);
+    // Append script to the widget container
+    container.querySelector(
+      ".tradingview-widget-container__widget"
+    )?.appendChild(script);
 
+    // Cleanup on unmount
     return () => {
-      container.innerHTML = ""; // Cleanup on unmount
+      container.innerHTML = "";
     };
   }, [symbol]);
 

@@ -19,13 +19,13 @@ const About = ({data, selectedCompany}) => {
       {/* content */}
       <Box sx={{display:'flex', gap:'3rem', marginTop:'1rem'}}>
         {/* left */}
-        <Box sx={{width:'60%', display:'flex', flexDirection:'column'}}>
+        <Box sx={{width:'100%', display:'flex', flexDirection:'column'}}>
           {/* description */}
           <Typography>
             {data}
           </Typography>
 
-          <Box sx={{display:'flex',gap:'2rem'}}>
+          <Box sx={{display:'flex',gap:'3rem'}}>
             {/* left */}
             <Box sx={{width:'45%'}}>
               {/* sector */}
@@ -63,14 +63,6 @@ const About = ({data, selectedCompany}) => {
             </Box>
           </Box>
         </Box>
-
-        {/* right */}
-        <Box sx={{width:'40%'}}>
-          <Typography sx={{fontWeight:'bold', fontSize:'1rem'}}>Market Cap: {`$${marketCap}B`}</Typography>
-          <Typography sx={{fontStyle:'italic'}}>{data}</Typography>
-          
-        </Box>
-       
       </Box>
       
     </Box>
