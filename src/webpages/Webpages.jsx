@@ -10,7 +10,7 @@ const Webpages = ({isLogin, setIsLogin}) => {
     <Box>
         <Navbar isLogin={isLogin} setIsLogin={setIsLogin} />
         <Content stockData={stockData} isLogin={isLogin} />
-        <TradingViewWidget />
+        {/* <TradingViewWidget /> */}
     </Box>
   )
 }

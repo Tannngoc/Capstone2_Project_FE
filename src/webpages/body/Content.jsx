@@ -6,7 +6,7 @@ import About from "./components/About";
 // import Financials from "./components/Financials";
 // import Forecasts from "./components/Forecasts";
 // import Chatbot from "./components/Chatbot";
-// import News from "./components/News";
+import News from "./components/News";
 import HandleChart from "./HandleChart";
 import { Market } from "../markets/Market";
 import { ToastContainer } from "react-toastify";
@@ -68,7 +68,7 @@ const Content = ({ isLogin }) => {
         {/* <Financials data={...} /> */}
         {/* <Forecasts data={...} /> */}
         {/* <Chatbot showChat={showChat} setShowChat={setShowChat} /> */}
-        <Market />
+        <News />
       </Box>
     </Box>
   );

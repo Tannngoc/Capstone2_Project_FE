@@ -91,7 +91,7 @@ const Navbar = ({ isLogin, setIsLogin }) => {
           <Link style={{ textDecoration: "none" }} to={"/market"}>
             <Box sx={navItemStyle}>Markets</Box>
           </Link>
-          <Box sx={navItemStyle}>Tech</Box>
+          
         </Box>
 
         {/* phai */}
@@ -164,31 +164,7 @@ const Navbar = ({ isLogin, setIsLogin }) => {
       </Box>
 
       {/* nav duoi */}
-      <Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: "90vw",
-            marginTop: ".5rem",
-            justifyContent: "end",
-            alignItems: "center",
-            gap: "1.5rem",
-          }}
-        >
-          <Box onClick={() => handleTabClick("News")} sx={tabStyle("News")}>
-            News
-          </Box>
-          <Box onClick={() => handleTabClick("about")} sx={tabStyle("about")}>
-            About
-          </Box>
-          <Box onClick={() => handleTabClick("financials")} sx={tabStyle("financials")}>
-            Financials
-          </Box>
-          <Box onClick={() => handleTabClick("forecasts")} sx={tabStyle("forecasts")}>
-            Forecasts
-          </Box>
-        </Box>
-      </Box>
+      
     </Box>
   );
 };

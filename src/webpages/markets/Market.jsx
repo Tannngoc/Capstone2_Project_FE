@@ -213,9 +213,10 @@ export const Market = () => {
         </Box>
       </Box>
       {/* footer */}
-      <Box sx={{maxWidth:"100vw", height:'200px', backgroundColor:"black"}}>
-        <Box sx={{maxWidth:"90vw", mx:'auto', paddingTop:'1rem'}}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
+      <Box sx={{maxWidth:"100vw", maxHeight:'auto', backgroundColor:"black"}}>
+        <Box sx={{maxWidth:"90vw", mx:'auto', padding:'1rem 0',}}>
+          {/* left */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", borderTop:'1px solid whitesmoke',borderBottom:'1px solid whitesmoke' }}>
                       <Box
                         sx={{
                           width: "20px",
@@ -228,9 +229,13 @@ export const Market = () => {
                         Hubble
                       </Typography>
           </Box>
-
+          
+          {/* right */}
+          <Box>
+            
+          </Box>
         </Box>
-        <Box></Box>
+        
       </Box>
     </Box>
   );
