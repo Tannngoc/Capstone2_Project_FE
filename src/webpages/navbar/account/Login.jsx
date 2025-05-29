@@ -30,16 +30,17 @@ const Login = ({ isLogin, setIsLogin }) => {
     e.preventDefault();
 
     axios
-      .post("http://127.0.0.1:5000/api/auth/login", { username, password })
+      .post("http://localhost:3001/v1/auth/testlogin", { username, password })
       .then((result) => {
         if (
           result.data === "The password is incorrect" ||
           result.data === "No existed username"
         ) {
           setMessage(result.data);
-          toast.error(result.data, { autoClose: 2000 });
+          toast.error(result.data, { autoClose: 1200 });
+          
           setTimeout(() => {
-          }, 2200);
+          }, 1200);
         } else {
           setIsLogin(true);
           setAccessToken(result.data.access_token);
@@ -47,14 +48,14 @@ const Login = ({ isLogin, setIsLogin }) => {
           const userId = decoded.sub;
           localStorage.setItem("userId", userId);
           localStorage.setItem("accessToken", result.data.access_token);
-          toast.success("Login successful!", { autoClose: 1800 });
+          toast.success("Login successful!", { autoClose: 1200 });
           setTimeout(() => {
             navigate("/");
-          }, 2200);
+          }, 1200);
         }
       })
       .catch(() => {
-        toast.error("Login failed. Please try again!", { autoClose: 1800 });
+        toast.error("Login failed. Please try again!", { autoClose: 1200 });
       });
   };
 
