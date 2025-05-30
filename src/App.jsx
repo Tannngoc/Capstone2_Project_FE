@@ -7,7 +7,7 @@ import Webpages from './webpages/Webpages'
 import Register from './webpages/navbar/account/Register'
 import Login from './webpages/navbar/account/Login'
 
-import ManageUser from './webpages/navbar/account/userhomepage/ManageUser'
+import ManageUser from './dashboard/component/ManageUser'
 import { Market } from './webpages/markets/Market'
 import Dashboard from './dashboard/Dashboard'
 

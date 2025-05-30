@@ -75,7 +75,14 @@ const Navbar = ({ isLogin, setIsLogin }) => {
       >
         {/* trai */}
         <Box sx={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              cursor: "pointer",
+            }}
+          >
             <Box
               sx={{
                 width: "20px",
@@ -84,14 +91,22 @@ const Navbar = ({ isLogin, setIsLogin }) => {
                 borderRadius: "50%",
               }}
             />
-            <Typography sx={{ fontWeight: "bold", color: "black", fontSize: "2rem" }}>
-              Hubble
-            </Typography>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: "2rem",
+                  cursor: "pointer",
+                }}
+              >
+                Hubble
+              </Typography>
+            </Link>
           </Box>
           <Link style={{ textDecoration: "none" }} to={"/market"}>
             <Box sx={navItemStyle}>Markets</Box>
           </Link>
-          
         </Box>
 
         {/* phai */}
@@ -164,7 +179,6 @@ const Navbar = ({ isLogin, setIsLogin }) => {
       </Box>
 
       {/* nav duoi */}
-      
     </Box>
   );
 };
