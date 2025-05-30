@@ -74,7 +74,7 @@ const Content = ({ isLogin }) => {
         {/* <Financials data={...} /> */}
         {/* <Forecasts data={...} /> */}
         {/* <Chatbot showChat={showChat} setShowChat={setShowChat} /> */}
-        <News />
+        <Market/>
       </Box>
 
       {/* footer */}

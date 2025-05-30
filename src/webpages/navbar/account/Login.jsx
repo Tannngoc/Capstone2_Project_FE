@@ -30,7 +30,7 @@ const Login = ({ isLogin, setIsLogin }) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/v1/auth/testlogin", { username, password })
+      .post("http://127.0.0.1:5000/api/auth/login", { username, password })
       .then((result) => {
         if (
           result.data === "The password is incorrect" ||

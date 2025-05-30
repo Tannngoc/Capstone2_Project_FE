@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -14,83 +13,40 @@ import {
   Divider,
 } from "@mui/material";
 
-import FacebookIcon from '@mui/icons-material/Facebook';
-import MailIcon from '@mui/icons-material/Mail';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-
-const hotStocks = [
-  {
-    symbol: "AAPL",
-    name: "Apple Inc.",
-    price: 192.32,
-    change: 2.15,
-    percentChange: 1.13,
-    volume: "54.2M",
-  },
-  {
-    symbol: "GOOGL",
-    name: "Alphabet Inc.",
-    price: 2845.12,
-    change: -15.23,
-    percentChange: -0.53,
-    volume: "1.2M",
-  },
-  {
-    symbol: "TSLA",
-    name: "Tesla Inc.",
-    price: 715.5,
-    change: 10.5,
-    percentChange: 1.49,
-    volume: "32.8M",
-  },
-  {
-    symbol: "AMZN",
-    name: "Amazon.com Inc.",
-    price: 3342.88,
-    change: 25.67,
-    percentChange: 0.77,
-    volume: "3.5M",
-  },
-  {
-    symbol: "MSFT",
-    name: "Microsoft Corp.",
-    price: 299.01,
-    change: -1.12,
-    percentChange: -0.37,
-    volume: "18.7M",
-  },
-];
-
-const news = [
-  {
-    company: "Apple Inc.",
-    headline: "Apple launches new iPhone with advanced AI features",
-    url: "#",
-  },
-  {
-    company: "Alphabet Inc.",
-    headline: "Google announces breakthrough in quantum computing",
-    url: "#",
-  },
-  {
-    company: "Tesla Inc.",
-    headline: "Tesla hits record deliveries in Q2",
-    url: "#",
-  },
-  {
-    company: "Amazon.com Inc.",
-    headline: "Amazon expands grocery delivery to new cities",
-    url: "#",
-  },
-  {
-    company: "Microsoft Corp.",
-    headline: "Microsoft unveils new cloud security platform",
-    url: "#",
-  },
-];
+const symbolToName = {
+  AAPL: "Apple Inc.",
+  IBM: "IBM",
+  NVDA: "NVIDIA Corporation",
+  MSFT: "Microsoft Corp.",
+  TSLA: "Tesla Inc.",
+};
 
 export const Market = () => {
+  const [hotStocks, setHotStocks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [news, setNews] = useState([]);
+  const [loadingNews, setLoadingNews] = useState(true);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/api/news/latest")
+      .then((res) => res.json())
+      .then((data) => {
+        setNews(data);
+        setLoadingNews(false);
+      })
+      .catch(() => setLoadingNews(false));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/api/stock-price/latest-summary")
+      .then((res) => res.json())
+      .then((data) => {
+        setHotStocks(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <Box>
       <Box sx={{ maxWidth: "90vw", mx: "auto", p: 3 }}>
@@ -148,37 +104,54 @@ export const Market = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {hotStocks.map((stock) => (
-                  <TableRow key={stock.symbol}>
-                    <TableCell sx={{ fontWeight: "bold" }}>
-                      {stock.symbol}
+                {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={6} align="center">
+                      Loading...
                     </TableCell>
-                    <TableCell>{stock.name}</TableCell>
-                    <TableCell align="right">{stock.price.toFixed(2)}</TableCell>
-                    <TableCell
-                      align="right"
-                      sx={{
-                        color: stock.change >= 0 ? "success.main" : "error.main",
-                      }}
-                    >
-                      {stock.change > 0 ? "+" : ""}
-                      {stock.change.toFixed(2)}
-                    </TableCell>
-                    <TableCell
-                      align="right"
-                      sx={{
-                        color:
-                          stock.percentChange >= 0
-                            ? "success.main"
-                            : "error.main",
-                      }}
-                    >
-                      {stock.percentChange > 0 ? "+" : ""}
-                      {stock.percentChange.toFixed(2)}%
-                    </TableCell>
-                    <TableCell align="right">{stock.volume}</TableCell>
                   </TableRow>
-                ))}
+                ) : (
+                  hotStocks.map((stock) => (
+                    <TableRow key={stock.symbol}>
+                      <TableCell sx={{ fontWeight: "bold" }}>
+                        {stock.symbol}
+                      </TableCell>
+                      <TableCell>
+                        {symbolToName[stock.symbol] || stock.symbol}
+                      </TableCell>
+                      <TableCell align="right">
+                        {Number(stock.close).toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        sx={{
+                          color:
+                            Number(stock.change) >= 0
+                              ? "success.main"
+                              : "error.main",
+                        }}
+                      >
+                        {Number(stock.change) > 0 ? "+" : ""}
+                        {Number(stock.change).toFixed(2)}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        sx={{
+                          color:
+                            Number(stock.percent_change) >= 0
+                              ? "success.main"
+                              : "error.main",
+                        }}
+                      >
+                        {Number(stock.percent_change) > 0 ? "+" : ""}
+                        {Number(stock.percent_change).toFixed(2)}%
+                      </TableCell>
+                      <TableCell align="right">
+                        {Number(stock.volume).toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
               </TableBody>
             </Table>
           </Paper>
@@ -196,67 +169,41 @@ export const Market = () => {
           </Typography>
           <Paper elevation={2} sx={{ p: 2 }}>
             <List>
-              {news.map((item, idx) => (
-                <React.Fragment key={idx}>
-                  <ListItem sx={{ display: "block" }}>
-                    <Typography
-                      variant="subtitle1"
-                      component="span"
-                      fontWeight="bold"
+              {loadingNews ? (
+                <ListItem>Loading...</ListItem>
+              ) : (
+                news.map((item, idx) => (
+                  <React.Fragment key={idx}>
+                    <ListItem
+                      sx={{ display: "block", cursor: "pointer" }}
+                      component="a"
+                      href="https://finance.yahoo.com/topic/latest-news/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {item.company}:
-                    </Typography>{" "}
-                    <Link to={item.url} style={{color:'#585858', textDecoration:'none'}}>
-                      {item.headline}
-                    </Link>
-                  </ListItem>
-                  {idx < news.length - 1 && <Divider />}
-                </React.Fragment>
-              ))}
+                      <Typography
+                        variant="subtitle1"
+                        component="span"
+                        fontWeight="bold"
+                      >
+                        {symbolToName[item.company] || item.company}:
+                      </Typography>{" "}
+                      <Typography
+                        variant="body2"
+                        component="span"
+                        sx={{ color: "gray", ml: 1, mr: 1 }}
+                      >
+                        [{item.published_date}]
+                      </Typography>
+                      <span>{item.title}</span>
+                    </ListItem>
+                    {idx < news.length - 1 && <Divider />}
+                  </React.Fragment>
+                ))
+              )}
             </List>
           </Paper>
         </Box>
-      </Box>
-      {/* footer */}
-      <Box sx={{maxWidth:"100vw", maxHeight:'auto', backgroundColor:"black"}}>
-        <Box sx={{maxWidth:"90vw", mx:'auto', padding:'1rem 0'}}>
-          {/* left */}
-          <Box sx={{ display: "flex",justifyContent:'space-between' ,alignItems: "center", gap: "0.5rem", borderTop:'1px solid whitesmoke',borderBottom:'1px solid whitesmoke' }}>
-            {/* left */}
-            <Box sx={{display: "flex", alignItems: "center", gap: "0.5rem"}}>
-                <Box
-                        sx={{
-                          width: "20px",
-                          height: "20px",
-                          backgroundColor: "red",
-                          borderRadius: "50%",
-                          cursor:'pointer' 
-                        }}
-                />
-                <Typography sx={{ fontWeight: "bold",cursor:'pointer' ,color: "white", fontSize: "2rem" }}>
-                        <Link style={{color:"white", textDecoration:'none'}} to="/">Hubble</Link>
-                </Typography>
-
-            </Box>
-
-            {/* right */}
-            <Box>
-              <Box sx={{display:"flex", gap:'.5rem', alignItems:"center"}}>
-                <Typography sx={{color:"white", fontWeight:'bold', fontSize:'1.3rem', paddingRight:'1rem'}}>C2SE.28</Typography>
-                <Box sx={{display:'flex', gap:"1rem", alignItems:"center",borderLeft:"2px solid whitesmoke",paddingLeft:'1.5rem'}}>
-                  <FacebookIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}}/>
-                  <YouTubeIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
-                  <MailIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
-                  <TwitterIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
-                </Box>
-              </Box>  
-            </Box>
-          </Box>
-          
-          {/* right */}
-          
-        </Box>
-        
       </Box>
     </Box>
   );
