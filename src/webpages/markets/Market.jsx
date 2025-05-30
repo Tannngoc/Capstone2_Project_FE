@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -10,9 +11,13 @@ import {
   Paper,
   List,
   ListItem,
-  Link,
   Divider,
 } from "@mui/material";
+
+import FacebookIcon from '@mui/icons-material/Facebook';
+import MailIcon from '@mui/icons-material/Mail';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const hotStocks = [
   {
@@ -201,7 +206,7 @@ export const Market = () => {
                     >
                       {item.company}:
                     </Typography>{" "}
-                    <Link href={item.url} color="primary" underline="hover">
+                    <Link to={item.url} style={{color:'#585858', textDecoration:'none'}}>
                       {item.headline}
                     </Link>
                   </ListItem>
@@ -214,26 +219,42 @@ export const Market = () => {
       </Box>
       {/* footer */}
       <Box sx={{maxWidth:"100vw", maxHeight:'auto', backgroundColor:"black"}}>
-        <Box sx={{maxWidth:"90vw", mx:'auto', padding:'1rem 0',}}>
+        <Box sx={{maxWidth:"90vw", mx:'auto', padding:'1rem 0'}}>
           {/* left */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", borderTop:'1px solid whitesmoke',borderBottom:'1px solid whitesmoke' }}>
-                      <Box
+          <Box sx={{ display: "flex",justifyContent:'space-between' ,alignItems: "center", gap: "0.5rem", borderTop:'1px solid whitesmoke',borderBottom:'1px solid whitesmoke' }}>
+            {/* left */}
+            <Box sx={{display: "flex", alignItems: "center", gap: "0.5rem"}}>
+                <Box
                         sx={{
                           width: "20px",
                           height: "20px",
                           backgroundColor: "red",
                           borderRadius: "50%",
+                          cursor:'pointer' 
                         }}
-                      />
-                      <Typography sx={{ fontWeight: "bold", color: "white", fontSize: "2rem" }}>
-                        Hubble
-                      </Typography>
+                />
+                <Typography sx={{ fontWeight: "bold",cursor:'pointer' ,color: "white", fontSize: "2rem" }}>
+                        <Link style={{color:"white", textDecoration:'none'}} to="/">Hubble</Link>
+                </Typography>
+
+            </Box>
+
+            {/* right */}
+            <Box>
+              <Box sx={{display:"flex", gap:'.5rem', alignItems:"center"}}>
+                <Typography sx={{color:"white", fontWeight:'bold', fontSize:'1.3rem', paddingRight:'1rem'}}>C2SE.28</Typography>
+                <Box sx={{display:'flex', gap:"1rem", alignItems:"center",borderLeft:"2px solid whitesmoke",paddingLeft:'1.5rem'}}>
+                  <FacebookIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}}/>
+                  <YouTubeIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
+                  <MailIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
+                  <TwitterIcon sx={{color:'white', fontSize:'1.5rem', cursor:'pointer'}} />
+                </Box>
+              </Box>  
+            </Box>
           </Box>
           
           {/* right */}
-          <Box>
-            
-          </Box>
+          
         </Box>
         
       </Box>
