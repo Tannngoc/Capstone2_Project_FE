@@ -60,7 +60,7 @@ const HandleChart = ({ selectedCompany }) => {
   const fetchPrediction = async (symbol) => {
     try {
       const res = await axios.get(
-        `http://127.0.0.1:5000/api/predict/${symbol}`
+        `https://capstone2projectbe-production.up.railway.app/api/predict/${symbol}`
       );
       setPredictions([res.data]);
     } catch (err) {
